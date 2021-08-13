@@ -25,4 +25,9 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 	@Transactional
 	@Query(value="DELETE FROM Usuario u WHERE u.nome = ?1")
 	public void deletePorNome(String nome);
+	
+	@Modifying
+	@Transactional
+	@Query(value="UPDATE Usuario u set u.email = ?1 WHERE u.nome = ?2")
+	public void updateEmailPorNome(String email, String nome);
 }

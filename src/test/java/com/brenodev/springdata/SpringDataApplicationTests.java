@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.brenodev.springdata.model.Usuario;
 import com.brenodev.springdata.repository.UsuarioRepository;
+import com.brenodev.springdata.services.UsuarioService;
 
 @SpringBootTest
 class SpringDataApplicationTests {
@@ -19,7 +20,10 @@ class SpringDataApplicationTests {
 
 	@Autowired
 	private UsuarioRepository interfaceSpringDataUser;
-
+	
+	@Autowired
+	private UsuarioService usuarioService;
+	
 	@Test
 	public void testeInsert() {
 
@@ -38,7 +42,7 @@ class SpringDataApplicationTests {
 	}
 
 	@Test
-	public void testeConsulta() {
+	public void testeConsulta() throws Exception {
 
 		Optional<Usuario> usuarioSpringData = interfaceSpringDataUser.findById(8L);
 
@@ -50,7 +54,10 @@ class SpringDataApplicationTests {
 			System.out.println(usuarioSpringData.get().getNome());
 			System.out.println(usuarioSpringData.get().getSenha());
 			System.out.println(usuarioSpringData.get().getId());
+		}else {
+			throw new Exception();	
 		}
+		
 		/*
 		 * for (Telefone telefone : usuarioSpringData.get().getTelefones()){
 		 * System.out.println(telefone.getNumero());
@@ -77,7 +84,7 @@ class SpringDataApplicationTests {
 	}
 
 	@Test
-	public void testeUpdate() {
+	public void testeUpdate() throws Exception {
 		Optional<Usuario> usuarioSpringData = interfaceSpringDataUser.findById(13L);
 
 		if (usuarioSpringData.isPresent()) {
@@ -85,6 +92,8 @@ class SpringDataApplicationTests {
 			data.setNome("Alex Egidio Update Spring Data");
 			data.setIdade(25);
 			interfaceSpringDataUser.save(data);
+		}else {
+			throw new Exception();	
 		}
 
 	}
@@ -98,7 +107,7 @@ class SpringDataApplicationTests {
 	}
 
 	@Test
-	public void testeConsultaNome() {
+	public void testeConsultaNome() throws Exception {
 
 		List<Usuario> list = interfaceSpringDataUser.buscaPorNome("Alex");
 		if (list.size() > 0) {
@@ -112,6 +121,8 @@ class SpringDataApplicationTests {
 				System.out.println(usuarioSpringData.getId());
 				System.out.println("---------------------------------------------------");
 			}
+		}else {
+			throw new Exception();	
 		}
 
 	}
@@ -132,14 +143,16 @@ class SpringDataApplicationTests {
 	public void testeDeletePorNome() {
 		interfaceSpringDataUser.deletePorNome("Egidio Alex");
 	}
-	/*
-	 * @Test public void testeUpdateEmailPorNome(){
-	 * 
-	 * interfaceSpringDataUser.updateEmailPorNome(
-	 * "testeemailspringdata@gmail.com.br", "Alex Fernando Egidio");
-	 * 
-	 * }
-	 */
+	
+	
+	  @Test 
+	  public void testeUpdateEmailPorNome(){
+	  
+	  usuarioService.updateEmailPorNome(
+	  "testeemailspringdata@gmail.com.br", "Alex Egidio Update Spring Data");
+	  
+	 }
+	
 	/*
 	 * @Test public void testeInsertTelefone(){
 	 * 
