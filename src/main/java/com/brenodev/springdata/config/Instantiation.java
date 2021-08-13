@@ -19,15 +19,18 @@ public class Instantiation implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		
 			Usuario usuario = new Usuario();
-			usuario.setEmail("silvabreno462@gmail.com");
-			usuario.setIdade(19);
-			usuario.setLogin("320055b");
-			usuario.setNome("alex");
-			usuario.setSenha("brenosilva");
+			usuario.setEmail("xuxaparabaixinhos@gmail.com");
+			usuario.setIdade(27);
+			usuario.setLogin("2321breno");
+			usuario.setNome("juliana");
+			usuario.setSenha("2323");
 			usuarioRepository.save(usuario);
 			
 			List<Usuario> list = usuarioRepository.buscaPorNome("alex");
 			list.forEach(System.out::println);
+			
+			Usuario usuarioEmail = usuarioRepository.buscarPorEmail("xuxaparabaixinhos@gmail.com");
+			System.out.println(usuarioEmail.toString());
 		}
 		
 	}
