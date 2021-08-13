@@ -162,7 +162,7 @@ class SpringDataApplicationTests {
 	  @Test 
 	  public void testeInsertTelefone(){
 	  
-	  Optional<Usuario> usuarioSpringData = interfaceSpringDataUser.findById(39L);
+	  Optional<Usuario> usuarioSpringData = interfaceSpringDataUser.findById(43L);
 	  
 	  Telefone telefone = new Telefone(); 
 	  telefone.setTipo("Casa");
@@ -171,24 +171,5 @@ class SpringDataApplicationTests {
 	  
 	  interfaceTelefone.save(telefone); 
 	  }
-	 
-	/*
-	 * @Test public void testeConsultaNomeParamSort() {
-	 * 
-	 * List<Usuario> list = interfaceSpringDataUser. buscaPorNomeSort("Egidio",
-	 * Sort.by("id"));
-	 * 
-	 * for (Usuario usuarioSpringData : list) {
-	 * 
-	 * System.out.println(usuarioSpringData.getEmail());
-	 * System.out.println(usuarioSpringData.getIdade());
-	 * System.out.println(usuarioSpringData.getLogin());
-	 * System.out.println(usuarioSpringData.getNome());
-	 * System.out.println(usuarioSpringData.getSenha());
-	 * System.out.println(usuarioSpringData.getId());
-	 * System.out.println("---------------------------------------------------"); }
-	 * 
-	 * }
-	 */
 
 }
