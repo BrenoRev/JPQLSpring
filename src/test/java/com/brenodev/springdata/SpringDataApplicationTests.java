@@ -7,7 +7,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.brenodev.springdata.model.Telefone;
 import com.brenodev.springdata.model.Usuario;
+import com.brenodev.springdata.repository.TelefoneRepository;
 import com.brenodev.springdata.repository.UsuarioRepository;
 import com.brenodev.springdata.services.UsuarioService;
 
@@ -23,6 +25,9 @@ class SpringDataApplicationTests {
 	
 	@Autowired
 	private UsuarioService usuarioService;
+	
+	@Autowired
+	private TelefoneRepository interfaceTelefone;
 	
 	@Test
 	public void testeInsert() {
@@ -58,13 +63,13 @@ class SpringDataApplicationTests {
 			throw new Exception();	
 		}
 		
-		/*
-		 * for (Telefone telefone : usuarioSpringData.get().getTelefones()){
-		 * System.out.println(telefone.getNumero());
-		 * System.out.println(telefone.getTipo()); System.out.println(telefone.getId());
-		 * System.out.println(telefone.getUsuario().getNome());
-		 * System.out.println("-----------------------------------------"); }
-		 */
+		
+		  for (Telefone telefone : usuarioSpringData.get().getTelefone()){
+		  System.out.println(telefone.getNumero());
+		  System.out.println(telefone.getTipo()); System.out.println(telefone.getId());
+		  System.out.println(telefone.getUsuario().getNome());
+		  System.out.println("-----------------------------------------"); }
+		 
 	}
 
 	@Test
@@ -153,17 +158,20 @@ class SpringDataApplicationTests {
 	  
 	 }
 	
-	/*
-	 * @Test public void testeInsertTelefone(){
-	 * 
-	 * Optional<Usuario> usuarioSpringData = interfaceSpringDataUser.findById(4L);
-	 * 
-	 * Telefone telefone = new Telefone(); telefone.setTipo("Casa");
-	 * telefone.setNumero("857465454");
-	 * telefone.setUsuario(usuarioSpringData.get());
-	 * 
-	 * interfaceTelefone.save(telefone); }
-	 */
+	
+	  @Test 
+	  public void testeInsertTelefone(){
+	  
+	  Optional<Usuario> usuarioSpringData = interfaceSpringDataUser.findById(39L);
+	  
+	  Telefone telefone = new Telefone(); 
+	  telefone.setTipo("Casa");
+	  telefone.setNumero("857465454");
+	  telefone.setUsuario(usuarioSpringData.get());
+	  
+	  interfaceTelefone.save(telefone); 
+	  }
+	 
 	/*
 	 * @Test public void testeConsultaNomeParamSort() {
 	 * 

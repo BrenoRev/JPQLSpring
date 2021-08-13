@@ -1,16 +1,25 @@
 package com.brenodev.springdata.model;
 
+import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
-public class Usuario {
+public class Usuario implements Serializable{
+	private static final long serialVersionUID = 1L;
 
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Id
 	private Long id;
+	
+	@OneToMany(mappedBy = "usuario", orphanRemoval = true, fetch = FetchType.EAGER)
+	private List<Telefone> telefone;
 	
 	private String login;	
 	private String senha;
@@ -54,10 +63,21 @@ public class Usuario {
 	public void setIdade(int idade) {
 		this.idade = idade;
 	}
+	
+	public List<Telefone> getTelefone() {
+		return telefone;
+	}
+	
+	public void setTelefone(List<Telefone> telefone) {
+		this.telefone = telefone;
+	}
+
+	
+	
 	@Override
 	public String toString() {
-		return "UsuarioSpringData [id=" + id + ", login=" + login + ", senha=" + senha + ", nome=" + nome + ", email="
-				+ email + ", idade=" + idade + "]";
+		return "Usuario [id=" + id + ", telefone=" + telefone + ", login=" + login + ", senha=" + senha + ", nome="
+				+ nome + ", email=" + email + ", idade=" + idade + "]";
 	}
 	@Override
 	public int hashCode() {

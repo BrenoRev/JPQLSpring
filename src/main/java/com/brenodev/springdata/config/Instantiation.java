@@ -1,12 +1,9 @@
 package com.brenodev.springdata.config;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
-import com.brenodev.springdata.model.Usuario;
 import com.brenodev.springdata.repository.UsuarioRepository;
 
 @Configuration
@@ -17,7 +14,7 @@ public class Instantiation implements CommandLineRunner{
 	
 	@Override
 	public void run(String... args) throws Exception {
-		
+		/*
 			Usuario usuario = new Usuario();
 			usuario.setEmail("xuxinha@gmail.com");
 			usuario.setIdade(27);
@@ -38,6 +35,8 @@ public class Instantiation implements CommandLineRunner{
 			usuarioRepository.deletePorNome("xuxa2");
 			List<Usuario> list1 = usuarioRepository.buscaPorNome("xuxa2");
 			list1.forEach(System.out::println);
+			
+			*/
 		}
 		
 	}
